@@ -16,4 +16,5 @@ jobs:
         run: swiftc -O main.swift -o capsswitch
       # Reads the indicator preference without changing it; the daemon itself needs a login session.
       - name: Smoke test
-        run: ./capsswitch indicator | grep -q '^indicator: '
+        run: |
+          ./capsswitch indicator | grep -qE '^indicator: (on|off)$'
